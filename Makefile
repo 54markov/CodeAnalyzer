@@ -1,16 +1,18 @@
-CC       := g++ 
-SRCDIR   := src
-BUILDDIR := build
-TARGET   := bin/main
+CC        := g++
+SRCDIR    := src
+BUILDDIR  := build
+TARGETDIR := bin
+TARGET    := bin/main
 
-SRCEXT  := cpp
-SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
-OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS  := -g -Wall -O2 -std=c++17
-INC     := -I include
+SRCEXT    := cpp
+SOURCES   := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS   := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+CFLAGS    := -g -Wall -O2 -std=c++17
+INC       := -I include
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
+	@mkdir -p $(TARGETDIR)
 	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
@@ -19,6 +21,6 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 
 clean:
 	@echo " Cleaning..."; 
-	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
+	@echo " $(RM) -r $(BUILDDIR) $(TARGETDIR)"; $(RM) -r $(BUILDDIR) $(TARGETDIR)
 
 .PHONY: clean
