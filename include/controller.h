@@ -10,7 +10,7 @@ class Controller : public Observable
         Controller(Model* model);
         ~Controller();
 
-        void run(const int argc, const char** argv);
+        void run(std::vector<std::string>& v);
 
     private:
         Model* model_;

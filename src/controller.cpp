@@ -14,10 +14,7 @@ Controller::~Controller()
     ;
 }
 
-void Controller::run(const int argc, const char **argv)
+void Controller::run(std::vector<std::string>& v)
 {
-	std::vector<std::string> v;        // TODO
-	v.push_back(std::string(argv[1])); // TODO
-
     this->model_->process(v);
 }
