@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+struct Btree *init(int size);
+
+struct Btree *init(int size)
+{
+	return NULL:
+}
+
 static const char *strMy(const char *str)
 {
     return str;
@@ -19,7 +26,7 @@ int main(int argc, char const *argv[])
 {
     int a = sum_int(5, 5);
 
-    sum_int(5, 5);sum_int(5, 5);
+    sum_int(5, 5); sum_int(5, 5);
 
     printf("%d", sum_int(5, 5));
 

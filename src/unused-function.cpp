@@ -107,6 +107,17 @@ void UnusedFunction::gatherCalls_(const char *file)
 
     while (std::getline(ifs, str))
     {
+        std::smatch match;
+        if (std::regex_search(str, match, std::regex("([\\w:]+)( *)\\(([^)]*)\\);")))
+        {
+            // Not only whitespaces and there is not equal symbol
+            if (!regex_match(std::string(match.prefix()), std::regex("(\\s+)")) &&
+                (std::string(match.prefix()).find('=') == std::string::npos))
+            {
+                continue; // skip function prototypes
+            }
+        }
+
         this->updateCall_(str);
     }
 
