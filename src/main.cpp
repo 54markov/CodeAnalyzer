@@ -1,4 +1,4 @@
-#include <optional>
+#include <experimental/optional>
 #include <iostream>
 
 #include <stdio.h>
@@ -64,7 +64,7 @@ static void iterateDir(const char *directory, std::vector<std::string>& v)
     closedir(dir);
 }
 
-static std::optional<std::pair<int, std::vector<std::string>>>
+static std::experimental::optional<std::pair<int, std::vector<std::string>>>
 getCmdOption(const int argc, const char** argv)
 {
     std::vector<std::string> v;
@@ -108,7 +108,7 @@ getCmdOption(const int argc, const char** argv)
     }
 
     if ((sfFlag == -1) && (ufFlag == -1))
-        return std::nullopt;
+        return std::experimental::nullopt;
 
     return std::make_pair(ufFlag, v);
 }

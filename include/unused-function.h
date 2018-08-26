@@ -16,6 +16,5 @@ class UnusedFunction : public Model
     private:
         void gatherDefs_(const char *file);
         void gatherCalls_(const char *file);
-        void updateDef_(const char *file, const int line, const std::string &str);
         void updateCall_(const std::string &str);
 };
