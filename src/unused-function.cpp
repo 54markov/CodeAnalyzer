@@ -110,9 +110,11 @@ void UnusedFunction::gatherCalls_(const char *file)
         std::smatch match;
         if (std::regex_search(str, match, std::regex("([\\w:]+)( *)\\(([^)]*)\\);")))
         {
-            // Not only whitespaces and there is not equal symbol
+            // Not only whitespaces and there is not =/./-> symbol
             if (!regex_match(std::string(match.prefix()), std::regex("(\\s+)")) &&
-                (std::string(match.prefix()).find('=') == std::string::npos))
+                (std::string(match.prefix()).find("=") == std::string::npos)    &&
+                (std::string(match.prefix()).find(".") == std::string::npos)    &&
+                (std::string(match.prefix()).find("->") == std::string::npos))
             {
                 continue; // skip function prototypes
             }

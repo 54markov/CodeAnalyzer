@@ -30,5 +30,9 @@ int main(int argc, char const *argv[])
 
     printf("%d", sum_int(5, 5));
 
+    a.init();
+
+    b->init();
+
     return 0;
 }
